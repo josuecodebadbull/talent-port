@@ -1,1 +1,10 @@
-<p>employee works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <app-title-section [title]="'Empleados'"></app-title-section>
+        </div>
+        <div *ngIf="list" class="col-12">
+            <app-table [data]="list"></app-table>
+        </div>
+    </div>
+</div>

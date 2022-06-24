@@ -5,14 +5,14 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class EmployeeService {
+export class EmployeesService {
 
   readonly url = environment.endpoint;
 
   constructor(private http: HttpClient) { }
 
-  getEmployee() {
-    return this.http.get(`${environment.url}${this.url.employee.get.employee}`);
+  getEmployees() {
+    return this.http.get(`${environment.url}${this.url.employee.get.employees}`);
   }
 
 }
