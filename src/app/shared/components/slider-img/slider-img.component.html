@@ -1,0 +1,7 @@
+<div class="carousel bg-light">
+  <owl-carousel-o [options]="customOptions">    
+    <ng-template *ngFor="let item of img_slider" carouselSlide>
+        <img [src]="item.url" alt="" class="img-fluid carousel--img">
+    </ng-template>
+  </owl-carousel-o>
+</div>
