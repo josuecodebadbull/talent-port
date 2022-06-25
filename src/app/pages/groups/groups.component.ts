@@ -1,5 +1,5 @@
 import { CdkDragDrop, CdkDragEnter, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { GroupsService } from './services/groups.service';
 
@@ -8,7 +8,7 @@ import { GroupsService } from './services/groups.service';
   templateUrl: './groups.component.html',
   styleUrls: ['./groups.component.scss']
 })
-export class GroupsComponent implements OnInit {
+export class GroupsComponent implements OnInit, OnDestroy {
   groups: any;
   employeesListDrop = new Array;
   employeesSelectedList = new Array;
@@ -22,6 +22,11 @@ export class GroupsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData();
+  }
+
+  ngOnDestroy() {
+    this.UnSubscribe.next();
+    this.UnSubscribe.complete();
   }
 
   getData() {
@@ -84,7 +89,6 @@ export class GroupsComponent implements OnInit {
 
   changeStatus(check: boolean, indexGroup: any, indexEmployee: any) {
     this.employeesListDrop[indexGroup].employees[indexEmployee].active = check;
-    console.log(this.employeesListDrop);
   }
 
   showEmployeesSelected() {
@@ -105,9 +109,6 @@ export class GroupsComponent implements OnInit {
       }
     );
     this.employeesSelectedList = employeesSelected;
-    console.log('Empleados Seleccionados');    
-    console.log(this.employeesSelectedList);
-    
   }
 
 

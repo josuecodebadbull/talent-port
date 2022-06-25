@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthGuard } from './auth.guard';
 import { MenuNavigationModule } from './shared/components/menu-navigation/menu-navigation.module';
 
 @NgModule({
@@ -17,7 +18,7 @@ import { MenuNavigationModule } from './shared/components/menu-navigation/menu-n
     MenuNavigationModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,6 +6,7 @@ import { TitleSectionModule } from 'src/app/shared/components/title-section/titl
 import { TableModule } from 'src/app/shared/components/table/table.module';
 import {MatTabsModule} from '@angular/material/tabs';
 import { FormEmployeeModule } from 'src/app/shared/forms/form-employee/form-employee.module';
+import { EmployeesService } from './services/employee.service';
 
 const routes: Routes = [{ path: '', component: EmployeesComponent }];
 
@@ -20,6 +21,9 @@ const routes: Routes = [{ path: '', component: EmployeesComponent }];
     TableModule,
     MatTabsModule,
     FormEmployeeModule
+  ],
+  providers: [
+    EmployeesService
   ]
 })
 export class EmployeesModule { }

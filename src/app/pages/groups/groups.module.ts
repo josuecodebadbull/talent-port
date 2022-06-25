@@ -7,6 +7,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import { GroupsService } from './services/groups.service';
 
 const routes: Routes = [{ path: '', component: GroupsComponent }];
 
@@ -22,6 +23,9 @@ const routes: Routes = [{ path: '', component: GroupsComponent }];
     MatInputModule,
     MatCheckboxModule,
     MatButtonModule
+  ],
+  providers:[
+    GroupsService
   ]
 })
 export class GroupsModule { }
