@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/scss/vars';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: $base3;}
+
+.navbar{
+    background-color: $base2;
+    .navbar-nav{
+        .nav-item{
+            .nav-link{
+                color: #fff;
+                font-size: 19px;
+            }
+        }
+    }
+}

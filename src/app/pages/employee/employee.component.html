@@ -1,0 +1,13 @@
+<div class="container main">
+  <div class="row">
+    <div class="col-12">
+      <app-title-section [title]="'Empleados'"></app-title-section>
+    </div>
+    <div class="col-12">
+      <app-table *ngIf="list" [data]="list"></app-table>
+    </div>
+    <div class="col-7">
+      <app-form-employee (successAddEmployee)="refreshData()"></app-form-employee>
+    </div>
+  </div>
+</div>
