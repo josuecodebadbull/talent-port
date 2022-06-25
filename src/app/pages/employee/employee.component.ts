@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { EmployeesService } from './services/employee.service';
 
@@ -7,7 +7,7 @@ import { EmployeesService } from './services/employee.service';
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.scss']
 })
-export class EmployeesComponent implements OnInit {
+export class EmployeesComponent implements OnInit , OnDestroy{
 
   readonly UnSubscribe: Subject<void> = new Subject<void>();
   list : any ;
@@ -18,6 +18,11 @@ export class EmployeesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDataGrid();
+  }
+
+  ngOnDestroy() {
+    this.UnSubscribe.next();
+    this.UnSubscribe.complete();
   }
 
   getDataGrid() {
