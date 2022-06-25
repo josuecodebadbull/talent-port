@@ -18,9 +18,9 @@ const routes: Routes = [
       import('./pages/groups/groups.module').then((m) => m.GroupsModule),
   },
   {
-    path: 'employee',
+    path: 'employees',
     loadChildren: () =>
-      import('./pages/employee/employee.module').then((m) => m.EmployeeModule),
+      import('./pages/employee/employee.module').then((m) => m.EmployeesModule),
   }
 ];
 

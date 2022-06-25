@@ -1,15 +1,38 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
+import { EmployeesService } from './services/employee.service';
 
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.scss']
 })
-export class EmployeeComponent implements OnInit {
+export class EmployeesComponent implements OnInit {
 
-  constructor() { }
+  readonly UnSubscribe: Subject<void> = new Subject<void>();
+  list : any ;
+
+  constructor(
+    private EmployeesService: EmployeesService
+  ) { }
 
   ngOnInit(): void {
+    this.getDataGrid();
+  }
+
+  getDataGrid() {
+    const { EmployeesService, UnSubscribe } = this;
+    EmployeesService
+      .getEmployees()
+      .pipe(takeUntil(UnSubscribe))
+      .subscribe((resp: any) => {
+        const { data : { employees}} = resp;
+        this.list = employees;
+      });
+  }
+
+  refreshData(){
+    this.getDataGrid();
   }
 
 }
