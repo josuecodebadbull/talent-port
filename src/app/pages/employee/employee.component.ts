@@ -13,7 +13,7 @@ export class EmployeesComponent implements OnInit {
   list : any ;
 
   constructor(
-    private EmployeesService: EmployeesService
+    private employeesService: EmployeesService
   ) { }
 
   ngOnInit(): void {
@@ -21,8 +21,8 @@ export class EmployeesComponent implements OnInit {
   }
 
   getDataGrid() {
-    const { EmployeesService, UnSubscribe } = this;
-    EmployeesService
+    const { employeesService, UnSubscribe } = this;
+    employeesService
       .getEmployees()
       .pipe(takeUntil(UnSubscribe))
       .subscribe((resp: any) => {

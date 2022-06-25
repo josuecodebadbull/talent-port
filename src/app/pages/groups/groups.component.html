@@ -1,1 +1,55 @@
-<p>groups works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <app-title-section [title]="'Grupos'"></app-title-section>
+    </div>
+    <div class="example-container">
+      <h2>Grupos</h2>
+
+      <mat-form-field appearance="standard" class="filter">
+        <mat-label>Filtro</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Busqueda" #input>
+      </mat-form-field>
+
+      <div cdkDropList #groupsList="cdkDropList" [cdkDropListData]="groups" [cdkDropListConnectedTo]="[employeesList]"
+        class="list" (cdkDropListDropped)="drop($event)">
+        <div class="box" *ngFor="let item of groups" cdkDrag>{{item.name}}</div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h2>Empleados</h2>
+      <div cdkDropList #employeesList="cdkDropList" [cdkDropListData]="employeesListDrop"
+        [cdkDropListConnectedTo]="[groupsList]" class="list cdk-drop-list-disabled"
+        (cdkDropListDropped)="drop($event)">
+        <div class="d-flex flex-column box" *ngFor="let item of employeesListDrop; let indexGroup = index" cdkDrag
+          [cdkDragDisabled]="true">
+          <div>
+            {{item.name}}
+          </div>
+          <div class="container--employees" *ngIf="item.employees">
+            <ul>
+              <li *ngFor="let i of item.employees; let indexEmployee = index;">
+                <mat-checkbox (change)="changeStatus($event.checked, indexGroup, indexEmployee)" [checked]="i.active">{{i.id}} - {{i.name}}</mat-checkbox>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 d-flex justify-content-end">
+      <button (click)="showEmployeesSelected()" mat-button color="primary">SIGUIENTE</button>
+    </div>
+
+    <div class="list--employees d-flex flex-column col-12">
+      <h2>LISTA DE EMPLEADOS SELECCIONADOS:</h2>
+      <ul>
+        <li *ngFor="let item of employeesSelectedList">
+          {{item.name}}
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
