@@ -15,4 +15,8 @@ export class EmployeesService {
     return this.http.get(`${environment.url}${this.url.employee.get.employees}`);
   }
 
+  addEmployee(body: any) {
+    return this.http.post(`${environment.url}${this.url.employee.post.employees}`, body);
+  }
+
 }

@@ -3,5 +3,8 @@ export const ENDPOINTS = {
         get: {
             employees: 'v1/examen/employees/josue',
         },
+        post: {
+            employees: 'v1/examen/employees/josue',
+        }
     },
 }

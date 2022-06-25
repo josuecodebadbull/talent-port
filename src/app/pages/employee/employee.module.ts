@@ -4,6 +4,8 @@ import { EmployeesComponent } from './employee.component';
 import { RouterModule, Routes } from '@angular/router';
 import { TitleSectionModule } from 'src/app/shared/components/title-section/title-section.module';
 import { TableModule } from 'src/app/shared/components/table/table.module';
+import {MatTabsModule} from '@angular/material/tabs';
+import { FormEmployeeModule } from 'src/app/shared/forms/form-employee/form-employee.module';
 
 const routes: Routes = [{ path: '', component: EmployeesComponent }];
 
@@ -15,7 +17,9 @@ const routes: Routes = [{ path: '', component: EmployeesComponent }];
     CommonModule,
     RouterModule.forChild(routes),
     TitleSectionModule,
-    TableModule
+    TableModule,
+    MatTabsModule,
+    FormEmployeeModule
   ]
 })
 export class EmployeesModule { }

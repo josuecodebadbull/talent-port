@@ -31,4 +31,8 @@ export class EmployeesComponent implements OnInit {
       });
   }
 
+  refreshData(){
+    this.getDataGrid();
+  }
+
 }
